@@ -36,20 +36,18 @@ call plug#begin()
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-rails'
 Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'airblade/vim-gitgutter'
+Plug 'joshdick/onedark.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " Theme
-set background=dark
-colorscheme solarized
-let g:airline_theme='solarized'
-let g:airline_solarized_bg='dark'
+colorscheme onedark
 
 " Auto Command
 autocmd VimEnter * 20sp

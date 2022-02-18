@@ -2,6 +2,7 @@
 
 " General
 set nocompatible
+set t_Co=256
 
 " Backup Files
 set nobackup
@@ -43,7 +44,6 @@ set wildmenu
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_winsize=20
-let g:netrw_chgwin=winnr()+1
 
 " Cursor Line
 set cursorline
