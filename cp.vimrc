@@ -15,5 +15,4 @@ ino pb push_back()
 ino cin cin >> ;<Left>
 ino cout cout <<  << endl;<ESC>bbhi
 ino fin ios::sync_with_stdio(0);<CR>cin.tie(0);<CR>
-ino ( ()<Left>
-ino [ []<Left>
+ino { {<CR>;<CR>}<Up>
