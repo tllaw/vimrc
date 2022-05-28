@@ -64,6 +64,9 @@ autocmd VimEnter * terminal
 autocmd VimEnter * NERDTreeToggle
 autocmd VimEnter * wincmd w
 
+" Reverse Finding
+nnoremap \ ,
+
 " Key Maps
 let mapleader=","
 let g:twid=1001
