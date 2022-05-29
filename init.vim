@@ -35,6 +35,10 @@ set splitright
 set listchars=trail:·
 set list
 
+function! WrapRegion(region_name) range
+  execute "normal " .. a:firstline .. "GV" .. a:lastline .. "GdO#region " .. a:region_name .. "\<CR>\<BS>\<CR>\<CR>#endregion " .. a:region_name .. "\<ESC>2kp"
+endfunction
+
 " Plugins
 call plug#begin()
 Plug 'scrooloose/nerdtree'
@@ -83,6 +87,8 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 nn <leader>ci i#include <bits/stdc++.h><CR>using namespace std;<CR><CR>int main() {<CR>return 0;<CR>}<ESC>kO
+
+vnoremap <leader>wr :call WrapRegion(input('Region Name? '))<cr>
 
 set listchars=eol:↵,tab:>·,trail:▓,extends:>,precedes:<,space:·
 set list
