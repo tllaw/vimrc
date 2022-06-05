@@ -59,7 +59,7 @@ Plug 'sbdchd/neoformat'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'easymotion/vim-easymotion'
 Plug 'kshenoy/vim-signature'
-Plug 'fholgado/minibufexpl.vim'
+Plug 'jeetsukumaran/vim-buffergator'
 call plug#end()
 
 " Theme
@@ -68,23 +68,29 @@ colorscheme onedark
 " Enable automatically formatting file via "v fmt -" before writing buffer.
 let g:v_autofmt_bufwritepre = 1
 
+" buffergator
+let g:buffergator_autodismiss_on_select=0
+let g:buffergator_autoupdate=1
+let g:buffergator_viewport_split_policy='R'
+let g:buffergator_suppress_keymaps=1
+let g:buffergator_show_full_directory_path=0
+
 " Auto Command
-autocmd VimEnter * MBEOpen
-autocmd VimEnter * wincmd r
-autocmd VimEnter * 50vs
+autocmd VimEnter * BuffergatorOpen
+autocmd VimEnter * sp
 autocmd VimEnter * terminal
+autocmd VimEnter * wincmd J
+autocmd VimEnter * normal ,to
 autocmd VimEnter * NERDTreeToggle
 autocmd VimEnter * wincmd w
-autocmd VimEnter * wincmd w
 
-" Reverse Finding
 nnoremap \ ,
 
 " Key Maps
 let mapleader=","
 let g:twid=1002
-nnoremap <leader>tc :call win_execute(g:twid, 'vertical resize 0')<CR>
-nnoremap <leader>to :call win_execute(g:twid, 'vertical resize 50')<CR>
+nnoremap <leader>tc :call win_execute(g:twid, 'resize 0')<CR>
+nnoremap <leader>to :call win_execute(g:twid, 'resize 20')<CR>
 " NERDTree
 nnoremap <leader>/ :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
