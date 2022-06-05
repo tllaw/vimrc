@@ -35,6 +35,8 @@ set splitright
 set listchars=trail:·
 set list
 
+set clipboard=unnamed,unnamedplus
+
 function! WrapRegion(region_name) range
   execute "normal " .. a:firstline .. "GV" .. a:lastline .. "GdO#region " .. a:region_name .. "\<CR>\<BS>\<CR>\<CR>#endregion " .. a:region_name .. "\<ESC>2kp"
 endfunction
@@ -45,7 +47,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
@@ -54,6 +57,9 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ollykel/v-vim'
 Plug 'sbdchd/neoformat'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'easymotion/vim-easymotion'
+Plug 'kshenoy/vim-signature'
+Plug 'fholgado/minibufexpl.vim'
 call plug#end()
 
 " Theme
@@ -63,9 +69,12 @@ colorscheme onedark
 let g:v_autofmt_bufwritepre = 1
 
 " Auto Command
-autocmd VimEnter * 20sp
+autocmd VimEnter * MBEOpen
+autocmd VimEnter * wincmd r
+autocmd VimEnter * 50vs
 autocmd VimEnter * terminal
 autocmd VimEnter * NERDTreeToggle
+autocmd VimEnter * wincmd w
 autocmd VimEnter * wincmd w
 
 " Reverse Finding
@@ -73,18 +82,18 @@ nnoremap \ ,
 
 " Key Maps
 let mapleader=","
-let g:twid=1001
-nnoremap <leader>tc :call win_execute(g:twid, 'resize 0')<CR>
-nnoremap <leader>to :call win_execute(g:twid, 'resize 20')<CR>
+let g:twid=1002
+nnoremap <leader>tc :call win_execute(g:twid, 'vertical resize 0')<CR>
+nnoremap <leader>to :call win_execute(g:twid, 'vertical resize 50')<CR>
 " NERDTree
 nnoremap <leader>/ :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 tnoremap <Esc> <C-\><C-n>
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+" fzf
+nnoremap <leader>ff :Files<cr>
+nnoremap <leader>fg :Rg<cr>
+nnoremap <leader>fw :Windows<cr>
+nnoremap <leader>fb :Buffers<cr>
 
 nn <leader>ci i#include <bits/stdc++.h><CR>using namespace std;<CR><CR>int main() {<CR>return 0;<CR>}<ESC>kO
 
